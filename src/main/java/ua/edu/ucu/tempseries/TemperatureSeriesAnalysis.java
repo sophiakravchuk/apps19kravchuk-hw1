@@ -154,12 +154,7 @@ public class TemperatureSeriesAnalysis {
         if (arr.length == 0){
             throw new IllegalArgumentException();
         }
-        TempSummaryStatistics statistic = new TempSummaryStatistics(arr);
-        statistic.setAvgTemp(this.average());
-        statistic.setDevTemp(this.deviation());
-        statistic.setMaxTemp(this.max());
-        statistic.setMinTemp(this.min());
-        return statistic;
+        return new TempSummaryStatistics(arr);
     }
 
     public int addTemps(double... temps) {
