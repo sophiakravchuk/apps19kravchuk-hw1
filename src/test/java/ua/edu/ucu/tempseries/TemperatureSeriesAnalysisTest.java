@@ -5,8 +5,22 @@ import org.junit.Test;
 import org.junit.Ignore;
 
 import java.util.Arrays;
+import java.util.InputMismatchException;
 
 public class TemperatureSeriesAnalysisTest {
+    //    @Ignore
+    @Test
+    public void testTemperatureSeriesAnalysisWithoutTemps() {
+        TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis();
+    }
+
+//    @Ignore
+    @Test(expected = InputMismatchException.class)
+    public void testTemperatureSeriesAnalysis() {
+        // setup input data and expected result
+        double[] temperatureSeries = {-1.0, 4.0, -273.0, -280.0, 3.0};
+        TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
+    }
 
 //    @Ignore
     @Test

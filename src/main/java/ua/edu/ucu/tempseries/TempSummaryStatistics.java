@@ -13,10 +13,6 @@ public class TempSummaryStatistics {
         this.arr = Arrays.copyOf(temperatureSeries, temperatureSeries.length);
     }
 
-    public double[] getArr() {
-        return arr;
-    }
-
     public double getAvgTemp() {
         return avgTemp;
     }
