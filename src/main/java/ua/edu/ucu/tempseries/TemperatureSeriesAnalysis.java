@@ -6,6 +6,7 @@ import java.util.InputMismatchException;
 
 public class TemperatureSeriesAnalysis {
     private double[] arr;
+    private final double EPSILON = 0.000001;
     public TemperatureSeriesAnalysis() {
     }
     public TemperatureSeriesAnalysis(double[] temperatureSeries) {
@@ -18,7 +19,7 @@ public class TemperatureSeriesAnalysis {
         }
     }
     public double[] getArr() {
-        return arr;
+        return Arrays.copyOf(arr, arr.length);
     }
     public double average() {
         if (arr.length == 0) {
@@ -76,10 +77,8 @@ public class TemperatureSeriesAnalysis {
             if (Math.abs(closest) > Math.abs(el)) {
                 closest = el;
             }
-            else if (Math.abs(closest) == Math.abs(el)) {
-                if (closest < el) {
-                    closest = el;
-                }
+            else if (Math.abs(Math.abs(closest) - Math.abs(el)) < EPSILON)  {
+                closest = Math.max(closest, el);
             }
         }
         return closest;
@@ -93,11 +92,8 @@ public class TemperatureSeriesAnalysis {
             if (Math.abs(closest - tempValue) > Math.abs(el - tempValue)) {
                 closest = el;
             }
-            else if (Math.abs(closest - tempValue)
-                    == Math.abs(el - tempValue)) {
-                if (closest < el) {
-                    closest = el;
-                }
+            else if ((Math.abs(Math.abs(closest - tempValue) - Math.abs(el - tempValue)) < EPSILON)) {
+                closest = Math.max(closest, el);
             }
         }
         return closest;
