@@ -6,7 +6,6 @@ import java.util.InputMismatchException;
 
 public class TemperatureSeriesAnalysis {
     private double[] arr;
-    private double epsilon = 0.000001;
     public TemperatureSeriesAnalysis() {
     }
     public TemperatureSeriesAnalysis(double[] temperatureSeries) {
@@ -69,6 +68,7 @@ public class TemperatureSeriesAnalysis {
         return max;
     }
     public double findTempClosestToZero() {
+        final double epsilon = 0.000001;
         if (arr.length == 0) {
             throw new IllegalArgumentException();
         }
@@ -84,6 +84,7 @@ public class TemperatureSeriesAnalysis {
         return closest;
     }
     public double findTempClosestToValue(double tempValue) {
+        final double epsilon = 0.000001;
         if (arr.length == 0) {
             throw new IllegalArgumentException();
         }
