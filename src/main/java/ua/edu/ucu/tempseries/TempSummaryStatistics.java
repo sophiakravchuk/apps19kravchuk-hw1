@@ -7,11 +7,12 @@ public class TempSummaryStatistics {
     private final double maxTemp;
 
     TempSummaryStatistics(double[] temperatureSeries) {
-        final TemperatureSeriesAnalysis arr = new TemperatureSeriesAnalysis(temperatureSeries);
-        this.avgTemp = arr.average();
-        this.devTemp = arr.deviation();
-        this.minTemp = arr.min();
-        this.maxTemp = arr.max();
+        final TemperatureSeriesAnalysis Arr =
+                new TemperatureSeriesAnalysis(temperatureSeries);
+        this.avgTemp = Arr.average();
+        this.devTemp = Arr.deviation();
+        this.minTemp = Arr.min();
+        this.maxTemp = Arr.max();
     }
     public double getAvgTemp() {
         return avgTemp;

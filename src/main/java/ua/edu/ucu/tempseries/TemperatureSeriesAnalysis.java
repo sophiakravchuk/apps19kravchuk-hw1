@@ -6,51 +6,43 @@ import java.util.InputMismatchException;
 
 public class TemperatureSeriesAnalysis {
     private double[] arr;
-
     public TemperatureSeriesAnalysis() {
     }
-
     public TemperatureSeriesAnalysis(double[] temperatureSeries) {
+        final double minTemp = -273.0;
         this.arr = Arrays.copyOf(temperatureSeries, temperatureSeries.length);
-        for (double el: arr){
-            if  (el < -273){
+        for(double el: arr){
+            if(el < minTemp){
                 throw new InputMismatchException();
             }
         }
     }
-
     public double[] getArr() {
         return arr;
     }
-
-    public double average() {
-        if (arr.length == 0){
+    public double average(){
+        if(arr.length == 0){
             throw new IllegalArgumentException();
         }
         int sum = 0;
         int average;
-        for (double el: arr){
+        for(double el: arr){
             sum += el;
         }
         average = sum / arr.length;
         return average;
     }
-
-
     public double deviation() {
-        if (arr.length == 0){
+        if(arr.length == 0){
             throw new IllegalArgumentException();
         }
         double av = this.average();
         double disp = 0;
-        for (double el: arr){
-            disp += Math.pow((el - av), 2);
+        for(double el: arr){
+            disp += (el - av)*(el - av);
         }
-
         return Math.sqrt(disp/arr.length);
     }
-
-
     public double min() {
         if (arr.length == 0){
             throw new IllegalArgumentException();
@@ -63,10 +55,8 @@ public class TemperatureSeriesAnalysis {
         }
         return min;
     }
-
-
     public double max() {
-        if (arr.length == 0){
+        if(arr.length == 0){
             throw new IllegalArgumentException();
         }
         double max = -Double.MAX_VALUE;
@@ -77,8 +67,6 @@ public class TemperatureSeriesAnalysis {
         }
         return max;
     }
-
-
     public double findTempClosestToZero() {
         if (arr.length == 0){
             throw new IllegalArgumentException();
@@ -96,8 +84,6 @@ public class TemperatureSeriesAnalysis {
         }
         return closest;
     }
-
-
     public double findTempClosestToValue(double tempValue) {
         if (arr.length == 0){
             throw new IllegalArgumentException();
@@ -115,7 +101,6 @@ public class TemperatureSeriesAnalysis {
         }
         return closest;
     }
-
     private double[] shrinkArray(double[] tempArr, int i){
         double[] shArr = new double [i];
         int j = 0;
@@ -125,42 +110,38 @@ public class TemperatureSeriesAnalysis {
         }
         return shArr;
     }
-
     public double[] findTempsLessThen(double tempValue) {
-        double[] less_arr_t = new double [arr.length];
+        double[] lessArrT = new double [arr.length];
         int i = 0;
         for (double el: arr){
             if (el <= tempValue){
-                less_arr_t[i] = el;
+                lessArrT[i] = el;
                 i++;
             }
         }
-        return shrinkArray(less_arr_t, i);
+        return shrinkArray(lessArrT, i);
     }
-
     public double[] findTempsGreaterThen(double tempValue) {
-        double[] great_arr_t = new double [arr.length];
+        double[] greatArrT = new double [arr.length];
         int i = 0;
         for (double el: arr){
             if (el >= tempValue){
-                great_arr_t[i] = el;
+                greatArrT[i] = el;
                 i++;
             }
         }
-        return shrinkArray(great_arr_t, i);
+        return shrinkArray(greatArrT, i);
     }
-
     public TempSummaryStatistics summaryStatistics() {
         if (arr.length == 0){
             throw new IllegalArgumentException();
         }
         return new TempSummaryStatistics(arr);
     }
-
     public int addTemps(double... temps) {
         double[] arrNew;
-        int LTemps = temps.length;
-        if (arr[arr.length-LTemps] != 0.0){
+        int lTemps = temps.length;
+        if (arr[arr.length-lTemps] != 0.0){
             arrNew = new double[2*arr.length];
         }
         else{
