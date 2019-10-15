@@ -9,10 +9,10 @@ public class TemperatureSeriesAnalysis {
     public TemperatureSeriesAnalysis() {
     }
     public TemperatureSeriesAnalysis(double[] temperatureSeries) {
-        final double MinTemp_ = -273.0;
+        final double MIN_TEMP = -273.0;
         this.arr = Arrays.copyOf(temperatureSeries, temperatureSeries.length);
         for (double el: arr) {
-            if (el < MinTemp_) {
+            if (el < MIN_TEMP) {
                 throw new InputMismatchException();
             }
         }
@@ -93,8 +93,8 @@ public class TemperatureSeriesAnalysis {
             if (Math.abs(closest - tempValue) > Math.abs(el - tempValue)) {
                 closest = el;
             }
-            else if (Math.abs(closest - tempValue) ==
-                    Math.abs(el - tempValue)) {
+            else if (Math.abs(closest - tempValue)
+                    == Math.abs(el - tempValue)) {
                 if (closest < el) {
                     closest = el;
                 }
