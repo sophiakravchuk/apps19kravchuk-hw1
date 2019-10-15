@@ -68,7 +68,7 @@ public class TemperatureSeriesAnalysis {
         return max;
     }
     public double findTempClosestToZero() {
-        final double epsilon = 0.000001;
+        final double EPSILON = 0.000001;
         if (arr.length == 0) {
             throw new IllegalArgumentException();
         }
@@ -77,14 +77,14 @@ public class TemperatureSeriesAnalysis {
             if (Math.abs(closest) > Math.abs(el)) {
                 closest = el;
             }
-            else if (Math.abs(Math.abs(closest) - Math.abs(el)) < epsilon)  {
+            else if (Math.abs(Math.abs(closest) - Math.abs(el)) < EPSILON)  {
                 closest = Math.max(closest, el);
             }
         }
         return closest;
     }
     public double findTempClosestToValue(double tempValue) {
-        final double epsilon = 0.000001;
+        final double EPSILON = 0.000001;
         if (arr.length == 0) {
             throw new IllegalArgumentException();
         }
@@ -94,7 +94,7 @@ public class TemperatureSeriesAnalysis {
                 closest = el;
             }
             else if (Math.abs(Math.abs(closest - tempValue)
-                    - Math.abs(el - tempValue)) < epsilon) {
+                    - Math.abs(el - tempValue)) < EPSILON) {
                 closest = Math.max(closest, el);
             }
         }
